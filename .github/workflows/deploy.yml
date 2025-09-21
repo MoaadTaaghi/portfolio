@@ -1,33 +1,46 @@
 name: Deploy React App to GitHub Pages
 
+# Déclenche le workflow à chaque push sur main
 on:
   push:
     branches:
       - main
 
+# Permissions pour écrire sur le dépôt
 permissions:
   contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
+    steps:
+      # 1️⃣ Récupère le code du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Version plus récente
+
+      # 2️⃣ Installe Node.js et configure le cache npm
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4  # Version plus récente
         with:
           node-version: 18
           cache: npm
 
+      # 3️⃣ Installe les dépendances
       - name: Install dependencies
         run: npm ci
 
+      # 4️⃣ Build le projet avec Vite
       - name: Build project
         run: npm run build
 
+      # 5️⃣ Déployer sur GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.tokenportfolio }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages
+          # Optionnel: personnaliser le commit
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'

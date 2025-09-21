@@ -1,0 +1,14 @@
+[33m6e4f427[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m fix: use secret for GH token, remove exposed token
+[33ma93394c[m fix: use personal token secret for GH Pages deployment
+[33m04feff8[m[33m ([m[1;31morigin/main[m[33m)[m fix: use personal token secret for GH Pages deployment
+[33m7f246b3[m fix: use personal token secret for GH Pages deployment
+[33m1bd88bc[m fix: update vite config, gitignore, and GH Actions workflow
+[33m6214b7e[m fix: update GitHub Actions workflow for Vite build
+[33m02450f6[m first commit
+[33mb2a6dd8[m first commit
+[33m3f286e1[m Remove node_modules and dist from git tracking
+[33m08f9102[m Add GitHub Actions workflow for deployment
+[33mf25815d[m Add homepage and base for GitHub Pages deployment
+[33mbbeac4d[m first commit
+[33mc78aa93[m Initial commit
+[33mce60893[m first commit
