@@ -3,12 +3,14 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main   # ou master si ta branche par défaut est master
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,7 +22,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci   # installe depuis package-lock.json (plus rapide et fiable)
+        run: npm ci
 
       - name: Build project
         run: npm run build
@@ -28,5 +30,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{secrets.tokenport}}
           publish_dir: ./dist
